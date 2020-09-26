@@ -17,7 +17,7 @@ export default function AddProject({ addProject }) {
         setEditableProject={setProject}
       ></EditableProject>
       <Button
-        className="add-project-button"
+        className="app-button"
         variant="contained"
         color="secondary"
         onClick={() => {

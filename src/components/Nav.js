@@ -1,4 +1,4 @@
-import { AppBar, Button, Toolbar, Typography } from "@material-ui/core";
+import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import React from "react";
 import './styles.css';
 
@@ -10,7 +10,6 @@ export default function Nav() {
           <Typography variant="h6">
             Portfolio
           </Typography>
-          <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
     </>
