@@ -1,51 +1,49 @@
-import React from 'react';
+import React from "react";
 
 function App() {
   const projects = [
     {
-      "title": "My cool project 1",
-      "description": "I did a lot of nice things with this project",
-      "links": [
+      title: "My cool project 1",
+      description: "I did a lot of nice things with this project",
+      links: [
         {
           name: "GitHub",
-          url: "https://www.github.com/brockcsc/brockcsc.github.io"
-        }
-      ]
+          url: "https://www.github.com/brockcsc/brockcsc.github.io",
+        },
+      ],
     },
     {
-      "title": "My cool project 1",
-      "description": "I did a lot of nice things with this project",
-      "links": [
+      title: "My cool project 2",
+      description: "I did a lot of nice things with this project",
+      links: [
         {
           name: "GitHub",
-          url: "https://www.github.com/brockcsc/brockcsc.github.io"
-        }
-      ]
+          url: "https://www.github.com/brockcsc/brockcsc.github.io",
+        },
+      ],
     },
     {
-      "title": "My cool project 1",
-      "description": "I did a lot of nice things with this project",
-      "links": [
+      title: "My cool project 3",
+      description: "I did a lot of nice things with this project",
+      links: [
         {
           name: "GitHub",
-          url: "https://www.github.com/brockcsc/brockcsc.github.io"
-        }
-      ]
-    }
-  ]
+          url: "https://www.github.com/brockcsc/brockcsc.github.io",
+        },
+      ],
+    },
+  ];
   return (
     <div>
-      {[<div>Nice</div>, <div>Okay</div>]}
-      <div>
-        <h1>Project</h1>
-        <p>Description</p>
-        <a href="https://www.brockcsc.ca">GitHub? Not really</a>
-      </div>
-      <div>
-        <h1>Project 2</h1>
-        <p>Description 2</p>
-        <a href="https://www.brockcsc.ca">GitHub 2? Not really</a>
-      </div>
+      {projects.map((project) => (
+        <div>
+          <h1>{project.title}</h1>
+          <p>{project.description}</p>
+          {project.links.map((link) => (
+            <a href={link.url}>{link.name}</a>
+          ))}
+        </div>
+      ))}
     </div>
   );
 }
