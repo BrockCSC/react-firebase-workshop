@@ -27,39 +27,38 @@ const mockProjects = {
   },
 };
 
-export default function Home() {
-  const [projects, setProjects] = useState(mockProjects);
+export default function Home({ user, projects, updateProject, deleteProject }) {
+  // const [projects, setProjects] = useState(mockProjects);
 
   return (
     <>
-      {Object.values(projects).map((project) => (
-        <Project
-          project={project}
-          key={`project_${project.id}`}
-          setProject={(newProject) => {
-            setProjects((prevProjects) => ({
-              ...prevProjects,
-              [project.id]: newProject,
-            }));
+      {projects &&
+        projects.map((project) => (
+          <Project
+            project={project}
+            key={`project_${project.id}`}
+            setProject={(newProject) => {
+              updateProject(newProject.id, newProject);
+              // setProjects((prevProjects) => ({
+              //   ...prevProjects,
+              //   [project.id]: newProject,
+              // }));
+            }}
+            deleteProject={deleteProject}
+            user={user}
+          ></Project>
+        ))}
+      {user && (
+        <AddProject
+          addProject={(newProject) => {
+            updateProject(newProject.id, newProject);
+            // setProjects((prevProjects) => ({
+            //   ...prevProjects,
+            //   [newProject.id]: newProject,
+            // }));
           }}
-          deleteProject={() => {
-            setProjects((prevProjects) => {
-              const newProjects = { ...prevProjects };
-              delete newProjects[project.id];
-              console.log(newProjects);
-              return newProjects;
-            });
-          }}
-        ></Project>
-      ))}
-      <AddProject
-        addProject={(newProject) => {
-          setProjects((prevProjects) => ({
-            ...prevProjects,
-            [newProject.id]: newProject,
-          }));
-        }}
-      ></AddProject>
+        ></AddProject>
+      )}
     </>
   );
 }

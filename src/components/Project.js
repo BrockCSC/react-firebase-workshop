@@ -11,7 +11,7 @@ import EditableProject from "./EditableProject";
 import EditIcon from "@material-ui/icons/Edit";
 import { Cancel, Delete, Save } from "@material-ui/icons";
 
-export default function Project({ project, setProject, deleteProject }) {
+export default function Project({ project, setProject, deleteProject, user }) {
   const [edit, setEdit] = useState(false);
   const [editableProject, setEditableProject] = useState(null);
 
@@ -28,7 +28,7 @@ export default function Project({ project, setProject, deleteProject }) {
               <Typography variant="h4" component="h2">
                 {project.title}
               </Typography>
-              <Typography variant="body" component="p">
+              <Typography variant="body1" component="p">
                 {project.description}
               </Typography>
             </CardContent>
@@ -40,13 +40,15 @@ export default function Project({ project, setProject, deleteProject }) {
               >
                 {project.linkName}
               </Button>
-              <IconButton
-                onClick={() => {
-                  setEdit(true);
-                }}
-              >
-                <EditIcon></EditIcon>
-              </IconButton>
+              {user && (
+                <IconButton
+                  onClick={() => {
+                    setEdit(true);
+                  }}
+                >
+                  <EditIcon></EditIcon>
+                </IconButton>
+              )}
             </CardActions>
           </>
         )}
@@ -75,7 +77,11 @@ export default function Project({ project, setProject, deleteProject }) {
               >
                 <Save></Save>
               </IconButton>
-              <IconButton onClick={deleteProject}>
+              <IconButton
+                onClick={() => {
+                  deleteProject(project.id);
+                }}
+              >
                 <Delete></Delete>
               </IconButton>
             </CardActions>
