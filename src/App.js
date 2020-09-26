@@ -1,4 +1,5 @@
 import React from "react";
+import Project from "./components/Project";
 
 function App() {
   const projects = [
@@ -36,13 +37,7 @@ function App() {
   return (
     <div>
       {projects.map((project) => (
-        <div>
-          <h1>{project.title}</h1>
-          <p>{project.description}</p>
-          {project.links.map((link) => (
-            <a href={link.url}>{link.name}</a>
-          ))}
-        </div>
+        <Project project={project}></Project>
       ))}
     </div>
   );
