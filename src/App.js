@@ -1,24 +1,50 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
 function App() {
+  const projects = [
+    {
+      "title": "My cool project 1",
+      "description": "I did a lot of nice things with this project",
+      "links": [
+        {
+          name: "GitHub",
+          url: "https://www.github.com/brockcsc/brockcsc.github.io"
+        }
+      ]
+    },
+    {
+      "title": "My cool project 1",
+      "description": "I did a lot of nice things with this project",
+      "links": [
+        {
+          name: "GitHub",
+          url: "https://www.github.com/brockcsc/brockcsc.github.io"
+        }
+      ]
+    },
+    {
+      "title": "My cool project 1",
+      "description": "I did a lot of nice things with this project",
+      "links": [
+        {
+          name: "GitHub",
+          url: "https://www.github.com/brockcsc/brockcsc.github.io"
+        }
+      ]
+    }
+  ]
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div>
+        <h1>Project</h1>
+        <p>Description</p>
+        <a href="https://www.brockcsc.ca">GitHub? Not really</a>
+      </div>
+      <div>
+        <h1>Project 2</h1>
+        <p>Description 2</p>
+        <a href="https://www.brockcsc.ca">GitHub 2? Not really</a>
+      </div>
     </div>
   );
 }
