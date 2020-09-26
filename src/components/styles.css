@@ -1,0 +1,21 @@
+.nav-root {
+  display: flex;
+  justify-content: space-between;
+}
+
+.project-card {
+  margin: 1rem;
+}
+
+.editable-project-wrapper .text-input {
+  margin-top: 1rem;
+}
+
+.editable-project-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.app-root .add-project-button {
+  margin-top: 1rem;
+}

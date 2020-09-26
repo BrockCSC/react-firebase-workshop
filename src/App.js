@@ -1,6 +1,9 @@
+import { Container } from "@material-ui/core";
 import React, { useState } from "react";
 import AddProject from "./components/AddProject";
+import Nav from "./components/Nav";
 import Project from "./components/Project";
+import "./components/styles.css";
 
 const mockProjects = {
   p1: {
@@ -29,38 +32,39 @@ const mockProjects = {
 function App() {
   const [projects, setProjects] = useState(mockProjects);
 
-  const [num, setNum] = useState(0);
-
   return (
-    <div>
-      {Object.values(projects).map((project) => (
-        <Project
-          project={project}
-          key={`project_${project.id}`}
-          setProject={(newProject) => {
+    <div class="app-root">
+      <Nav></Nav>
+      <Container>
+        {Object.values(projects).map((project) => (
+          <Project
+            project={project}
+            key={`project_${project.id}`}
+            setProject={(newProject) => {
+              setProjects((prevProjects) => ({
+                ...prevProjects,
+                [project.id]: newProject,
+              }));
+            }}
+            deleteProject={() => {
+              setProjects((prevProjects) => {
+                const newProjects = { ...prevProjects };
+                delete newProjects[project.id];
+                console.log(newProjects);
+                return newProjects;
+              });
+            }}
+          ></Project>
+        ))}
+        <AddProject
+          addProject={(newProject) => {
             setProjects((prevProjects) => ({
               ...prevProjects,
-              [project.id]: newProject,
+              [newProject.id]: newProject,
             }));
           }}
-          deleteProject={() => {
-            setProjects((prevProjects) => {
-              const newProjects = { ...prevProjects };
-              delete newProjects[project.id];
-              console.log(newProjects);
-              return newProjects;
-            });
-          }}
-        ></Project>
-      ))}
-      <AddProject
-        addProject={(newProject) => {
-          setProjects((prevProjects) => ({
-            ...prevProjects,
-            [newProject.id]: newProject,
-          }));
-        }}
-      ></AddProject>
+        ></AddProject>
+      </Container>
     </div>
   );
 }

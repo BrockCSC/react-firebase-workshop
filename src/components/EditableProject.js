@@ -1,4 +1,6 @@
+import { TextField } from "@material-ui/core";
 import React from "react";
+import "./styles.css";
 
 export default function EditableProject({
   editableProject,
@@ -16,27 +18,36 @@ export default function EditableProject({
   return (
     <>
       {editableProject && (
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <input
-            type="text"
+        <div className="editable-project-wrapper">
+          <TextField
+            className="text-input"
+            variant="outlined"
+            label="Title"
             name="title"
             value={editableProject.title}
             onChange={handleChange}
           />
-          <input
-            type="textarea"
+          <TextField
+            className="text-input"
+            variant="outlined"
+            label="Description"
             name="description"
             value={editableProject.description}
             onChange={handleChange}
+            multiline
           />
-          <input
-            type="text"
+          <TextField
+            className="text-input"
+            variant="outlined"
+            label="Link Name"
             name="linkName"
             value={editableProject.linkName}
             onChange={handleChange}
           />
-          <input
-            type="text"
+          <TextField
+            className="text-input"
+            variant="outlined"
+            label="Link Url"
             name="linkUrl"
             value={editableProject.linkUrl}
             onChange={handleChange}
