@@ -35,6 +35,7 @@ function App() {
   ]
   return (
     <div>
+      {[<div>Nice</div>, <div>Okay</div>]}
       <div>
         <h1>Project</h1>
         <p>Description</p>
