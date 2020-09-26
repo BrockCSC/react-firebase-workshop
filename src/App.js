@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import EditableProject from "./components/EditableProject";
+import AddProject from "./components/AddProject";
 import Project from "./components/Project";
 
 const mockProjects = {
@@ -33,28 +33,34 @@ function App() {
 
   return (
     <div>
-      {num}
-      <button
-        onClick={() => {
-          setNum((num) => num + 1);
-        }}
-      >
-        Do stuff
-      </button>
       {Object.values(projects).map((project) => (
-        <>
-          <Project project={project}></Project>
-          <EditableProject
-            project={project}
-            setProject={(newProject) => {
-              setProjects((prevProjects) => ({
-                ...prevProjects,
-                [project.id]: newProject,
-              }));
-            }}
-          ></EditableProject>
-        </>
+        <Project
+          project={project}
+          key={`project_${project.id}`}
+          setProject={(newProject) => {
+            setProjects((prevProjects) => ({
+              ...prevProjects,
+              [project.id]: newProject,
+            }));
+          }}
+          deleteProject={() => {
+            setProjects((prevProjects) => {
+              const newProjects = { ...prevProjects };
+              delete newProjects[project.id];
+              console.log(newProjects);
+              return newProjects;
+            });
+          }}
+        ></Project>
       ))}
+      <AddProject
+        addProject={(newProject) => {
+          setProjects((prevProjects) => ({
+            ...prevProjects,
+            [newProject.id]: newProject,
+          }));
+        }}
+      ></AddProject>
     </div>
   );
 }
